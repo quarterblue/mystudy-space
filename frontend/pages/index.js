@@ -10,22 +10,26 @@ const Title = styled.span`
   font-size: 72px;
 `;
 
+const MainBody = styled.div`
+  background-color: #D4D2A5;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+`;
+
 export default function Home() {
 	const startingTime = 20;
 	const [ hasStarted, setHasStarted ] = useState(false);
 	const [ timeLeft, setTimeLeft ] = useState(startingTime);	//25 minute default
 
-	const MainBody = styled.div`
-      background: ${hasStarted ? 'blue' : '#D4D2A5'};
-      height: 100vh;
-      width: 100vw;
-      display: flex;
-      justify-content: center;
-      transition: all 5s ease-in;
-	`;
+	const handleTimesUp = () => {
+		console.log('hi');
+	}
 
 	useEffect(() => {
 			if (timeLeft === 0) {
+				handleTimesUp();
 				return;
 			}
 			setTimeout(() => {
@@ -45,7 +49,6 @@ export default function Home() {
 			<MainBody>
 				{/*<LoginComponent img={'/room.png'}></LoginComponent>*/}
 				<Timer startingTime={startingTime} currentTime={timeLeft} icon={'/clock.svg'}></Timer>
-				<button onClick={() => setHasStarted(true)}></button>
 			</MainBody>
 
 		</div>
