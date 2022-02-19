@@ -5,17 +5,19 @@ from pydantic import BaseSettings
 
 class Config(BaseSettings):
     ENV: str = "development"
-    APP_HOST: str = "127.0.0.1"
+    APP_HOST: str = "0.0.0.0"
     APP_PORT: int = 9000
     POSTGRES_USER: str = ""
     POSTGRES_PW: str = ""
     POSTGRES_HOST = ""
     POSTGRES_DB = ""
-    DATABASE_URL: str = f"postgresql://{self.POSTGRES_USER}:{self.POSTGRES_PW}@{self.POSTGRES_HOST}/{self.POSTGRES_DB}"
+    DATABSE_URL: str = ""
+    # DATABASE_URL: str = f"postgresql://{POSTGRES_USER}:{POSTGRES_PW}@{POSTGRES_HOST}/{POSTGRES_DB}"
 
 
 class DevelopmentConfig(Config):
-    DATABASE_URL: str = f"postgresql://{self.POSTGRES_USER}:{self.POSTGRES_PW}@{self.POSTGRES_HOST}/{self.POSTGRES_DB}"
+    DATABSE_URL: str = ""
+    # DATABASE_URL: str = f"postgresql://{POSTGRES_USER}:{POSTGRES_PW}@{POSTGRES_HOST}/{POSTGRES_DB}"
 
 
 class ProductionConfig(Config):
@@ -23,7 +25,7 @@ class ProductionConfig(Config):
 
 
 def get_config():
-    os.getenv("ENV", "development")
+    env = os.getenv("ENV", "development")
     config_type = {
         "development": DevelopmentConfig(),
         "production": ProductionConfig(),
