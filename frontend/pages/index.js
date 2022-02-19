@@ -29,7 +29,7 @@ export default function Home() {
 
       <MainBody>
         {/*<LoginComponent img={'/room.png'}></LoginComponent>*/}
-        <RoomComponent />
+        {/* <RoomComponent bears={[0, 1, 2, 3, 4, 5]} /> */}
 
         <></>
       </MainBody>
