@@ -1,7 +1,20 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import MainButton from './components/MainButton';
+import styled from 'styled-components';
+import LoginComponent from './components/LoginComponent';
+
+const MainBody = styled.div`
+  background: #D4D2A5;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+`;
+
+const Title = styled.span`
+  font-size: 72px;
+`;
 
 export default function Home() {
 	return (
@@ -12,7 +25,10 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico"/>
 			</Head>
 
-			<MainButton type={'primary'}></MainButton>
+			<MainBody>
+				{/*<LoginComponent img={'/room.png'}></LoginComponent>*/}
+				<></>
+			</MainBody>
 
 		</div>
 	);
