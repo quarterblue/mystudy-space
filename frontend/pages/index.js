@@ -1,22 +1,39 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import LoginComponent from './components/LoginComponent';
-
-const MainBody = styled.div`
-  background: #D4D2A5;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-`;
+import Timer from './components/Timer';
 
 const Title = styled.span`
   font-size: 72px;
 `;
 
 export default function Home() {
+	const startingTime = 20;
+	const [ hasStarted, setHasStarted ] = useState(false);
+	const [ timeLeft, setTimeLeft ] = useState(startingTime);	//25 minute default
+
+	const MainBody = styled.div`
+      background: ${hasStarted ? 'blue' : '#D4D2A5'};
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      transition: all 5s ease-in;
+	`;
+
+	useEffect(() => {
+			if (timeLeft === 0) {
+				return;
+			}
+			setTimeout(() => {
+				setTimeLeft(timeLeft - 1);
+			}, 1000);
+		},
+	), [ timeLeft, hasStarted ];
+
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -27,7 +44,8 @@ export default function Home() {
 
 			<MainBody>
 				{/*<LoginComponent img={'/room.png'}></LoginComponent>*/}
-				<></>
+				<Timer startingTime={startingTime} currentTime={timeLeft} icon={'/clock.svg'}></Timer>
+				<button onClick={() => setHasStarted(true)}></button>
 			</MainBody>
 
 		</div>

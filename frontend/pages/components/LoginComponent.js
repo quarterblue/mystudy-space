@@ -104,7 +104,7 @@ const LoginComponent = ({ img, handleLogin, handleSignup }) => {
 				<StyledImage src={img} alt={'room'}></StyledImage>
 					{isSignUp ?
 						<RightLoginComponent>
-							<LoginInput title={'EMAIL'} required></LoginInput>
+							<LoginInput title={'EMAIL'} type={'email'} required></LoginInput>
 							<LoginInput title={'NAME'} required></LoginInput>
 							<LoginInput title={'PASSWORD'} type={'password'} required></LoginInput>
 							<PrimaryButton width={'100%'} type={'primary'} content={'SIGN UP'}></PrimaryButton>
