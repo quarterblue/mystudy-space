@@ -7,15 +7,19 @@ class Config(BaseSettings):
     ENV: str = "development"
     APP_HOST: str = "127.0.0.1"
     APP_PORT: int = 9000
-    DB_URL: str = ""
+    POSTGRES_USER: str = ""
+    POSTGRES_PW: str = ""
+    POSTGRES_HOST = ""
+    POSTGRES_DB = ""
+    DATABASE_URL: str = f"postgresql://{self.POSTGRES_USER}:{self.POSTGRES_PW}@{self.POSTGRES_HOST}/{self.POSTGRES_DB}"
 
 
 class DevelopmentConfig(Config):
-    DB_URL: str = ""
+    DATABASE_URL: str = f"postgresql://{self.POSTGRES_USER}:{self.POSTGRES_PW}@{self.POSTGRES_HOST}/{self.POSTGRES_DB}"
 
 
 class ProductionConfig(Config):
-    DB_URL: str = ""
+    DATABASE_URL: str = ""
 
 
 def get_config():
