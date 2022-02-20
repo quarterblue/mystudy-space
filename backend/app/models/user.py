@@ -13,4 +13,5 @@ class User(Base):
     full_name = Column(String, index=True)
     email = Column(String, unique=True, nullable=False)
     hashed_password = Column(String, nullable=False)
+    plushie = Column(Integer, default=0)
     timelines = relationship("Timeline", back_populates="user")

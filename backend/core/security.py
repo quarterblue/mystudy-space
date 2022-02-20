@@ -31,8 +31,7 @@ def create_access_token(
             minutes=config.ACCESS_TOKEN_EXPIRE_MINUTES
         )
     to_encode = {"exp": expire, "sub": str(subject)}
-    encoded_jwt = jwt.encode(
-        to_encode, config.SECRET_KEY, algorithm=ALGORITHM)
+    encoded_jwt = jwt.encode(to_encode, config.SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
 
@@ -49,9 +48,7 @@ def get_current_user(
     db: Session = Depends(deps.get_db), token: str = Depends(deps.reusable_oauth2)
 ) -> models.User:
     try:
-        payload = jwt.decode(
-            token, config.SECRET_KEY, algorithms=[ALGORITHM]
-        )
+        payload = jwt.decode(token, config.SECRET_KEY, algorithms=[ALGORITHM])
         token_data = schemas.TokenPayload(**payload)
     except (jwt.JWTError, ValidationError):
         raise HTTPException(
@@ -59,8 +56,7 @@ def get_current_user(
             detail="Could not validate credentials",
         )
 
-    user = db.query(models.User).filter(
-        models.User.id == token_data.sub).first()
+    user = db.query(models.User).filter(models.User.id == token_data.sub).first()
 
     if not user:
         raise HTTPException(status_code=404, detail="User not found")

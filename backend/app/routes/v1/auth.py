@@ -16,16 +16,12 @@ auth_router = APIRouter()
 def auth_access_token(
     db: Session = Depends(deps.get_db), form_data: OAuth2PasswordRequestForm = Depends()
 ) -> Any:
-    user = authenticate(
-        db, email=form_data.username, password=form_data.password
-    )
+    user = authenticate(db, email=form_data.username, password=form_data.password)
 
     if not user:
-        raise HTTPException(
-            status_code=400, detail="Incorrect email or password")
+        raise HTTPException(status_code=400, detail="Incorrect email or password")
 
-    access_token_expires = timedelta(
-        minutes=config.ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token_expires = timedelta(minutes=config.ACCESS_TOKEN_EXPIRE_MINUTES)
 
     return {
         "access_token": create_access_token(

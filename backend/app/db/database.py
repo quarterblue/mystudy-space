@@ -7,7 +7,7 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
 def session():
-    """ DB session used via Depends """
+    """DB session used via Depends"""
 
     session = SessionLocal()
     try:

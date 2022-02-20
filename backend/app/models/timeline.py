@@ -10,9 +10,11 @@ if TYPE_CHECKING:
 
 class Timeline(Base):
     id = Column(Integer, primary_key=True, index=True)
-    date_time = Column(DateTime)
-    mood = Column(String)
-    session_length = Column(Integer)
-    plushie_index = Column(Integer)
+    date_time = Column(DateTime, nullable=False)
+    type = Column(String, nullable=True)
+    mood = Column(String, nullable=True)
+    set_length = Column(Integer, nullable=True)
+    session_length = Column(Integer, nullable=True)
+    plushie_index = Column(Integer, nullable=True)
     user_id = Column(Integer, ForeignKey("user.id"))
     user = relationship("User", back_populates="timelines")
