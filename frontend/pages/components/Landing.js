@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react';
-import Timer from './Timer';
-import RoomComponent from './Room';
 import Button from './PrimaryButton';
 import DisplaySize from './DisplaySize';
 import Modal from './Modal';
@@ -8,7 +6,10 @@ import PrimaryButton from './PrimaryButton';
 import Input from './Input';
 import Image from 'next/image';
 import Confetti from 'react-confetti';
-import useWindowSize from 'react-use/lib/useWindowSize'
+import useWindowSize from 'react-use/lib/useWindowSize';
+import Timer from './Timer';
+import RoomComponent from './Room';
+import TimelineComponent from './TimeLine';
 
 import styled, { keyframes } from 'styled-components';
 
@@ -101,7 +102,7 @@ const PlushieImage = styled.div`
 `;
 
 const Landing = ({}) => {
-	const { width, height } = useWindowSize()
+	const {width, height} = useWindowSize();
 	const [ startingTime, setStartingTime ] = useState(25 * 60);
 	const [ numberOfSets, setNumberOfSets ] = useState(4);
 	const [ startingBreakTime, setStartingBreakTime ] = useState(5 * 60);
@@ -117,6 +118,7 @@ const Landing = ({}) => {
 	const [ settingsOpen, setSettingsOpen ] = useState(false);
 	const [ surveyOpen, setSurveyOpen ] = useState(false);
 	const [ setCompleted, setSetCompleted ] = useState(false);
+	const [ timelineOpen, setTimelineOpen ] = useState(false);
 
 	const SadTips = [
 		'That\'s too bad. Maybe try petting a dog! 🐕',
@@ -243,7 +245,15 @@ const Landing = ({}) => {
 
 	const handleSetCompleted = () => {
 		setSetCompleted(false);
-	}
+	};
+
+	const handleTimeLineClick = () => {
+		setTimelineOpen(!timelineOpen);
+	};
+
+	const handleTimelineClose = (value) => {
+		setTimelineOpen(value);
+	};
 
 	return (
 		<>
@@ -260,6 +270,7 @@ const Landing = ({}) => {
 					></Timer>
 				</TimerContainer>
 				<RoomComponent bears={[ 0, 1, 2, 3, 4, 5 ]}/>
+				<TimelineComponent visible={timelineOpen} close={handleTimelineClose}/>
 				<ButtonContainer>
 					<StyledButton
 						primary={false}
@@ -267,7 +278,7 @@ const Landing = ({}) => {
 						icon={`${playMusic ? 'rain-' : ''}cloud`}
 						onClick={handleMusicClick}
 					/>
-					<StyledButton primary={false} content={'timeline'} icon={'calendar'}/>
+					<StyledButton primary={false} content={'timeline'} icon={'calendar'} onClick={handleTimeLineClick}/>
 					<StyledButton
 						content={'start'}
 						icon={'arrow'}
@@ -338,7 +349,8 @@ const Landing = ({}) => {
 				</Modal>
 				<Modal
 					mask={false}
-					footer={<PrimaryButton onClick={handleSetCompleted} content={'CONFIRM'} width={'200px'}></PrimaryButton>}
+					footer={<PrimaryButton onClick={handleSetCompleted} content={'CONFIRM'}
+										   width={'200px'}></PrimaryButton>}
 					visible={setCompleted}
 					onCancel={() => setSettingsOpen(false)}
 					closable={false}
@@ -357,5 +369,6 @@ const Landing = ({}) => {
 		</>
 	);
 };
+
 
 export default Landing;
