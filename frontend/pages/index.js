@@ -20,8 +20,7 @@ const MainBody = styled.div`
     height: 100vh;
     width: 100vw;
     display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
+    justify-content: center;
 `;
 
 export default function Home() {
@@ -54,6 +53,7 @@ export default function Home() {
             {/*<Modal visible={true} closable={false}></Modal>*/}
 
             <MainBody>
+                {/*<LoginComponent img={'/room.png'}></LoginComponent>*/}
                 <Landing />
                 {/*<LoginComponent img={'/room.png'}></LoginComponent>*/}
                 {/* <TimerContainer>
