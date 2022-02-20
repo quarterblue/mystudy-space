@@ -8,13 +8,14 @@ import Timer from './components/Timer';
 import Modal from './components/Modal';
 import PrimaryButton from './components/PrimaryButton';
 import Input from './components/Input';
+import Landing from './components/Landing';
 
 const Title = styled.span`
   font-size: 72px;
 `;
 
 const MainBody = styled.div`
-  background-color: #D4D2A5;
+  background-color: #d4d2a5;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -65,35 +66,9 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico"/>
 			</Head>
 
-			<MainBody modalOpen={settingsOpen}>
-				<Modal
-					mask={false}
-					footer={<PrimaryButton content={'CONFIRM'} width={'200px'}></PrimaryButton>}
-					maskClosable={false}
-					visible={true}
-					closable={false}
-					centered={true}
-					title={'HOW WOULD YOU LIKE TO STUDY TODAY?'}
-					width={750}
-				>
-					<SettingsContainer>
-						<h2 style={{marginTop: '12px', width: '35%', textAlign: 'right'}}>MINUTES PER SET:</h2>
-						<Input type={'number'}></Input>
-					</SettingsContainer>
-					<SettingsContainer>
-						<h2 style={{marginTop: '12px', width: '35%', textAlign: 'right'}}>NUMBER OF SETS:</h2>
-						<Input type={'number'}></Input>
-					</SettingsContainer>
-					<SettingsContainer>
-						<h2 style={{marginTop: '12px', width: '35%', textAlign: 'right'}}>MINUTES PER BREAK:</h2>
-						<Input type={'number'}></Input>
-					</SettingsContainer>
-				</Modal>
+			<Landing />
 
 				{/*<LoginComponent img={'/room.png'}></LoginComponent>*/}
-				{/*<Timer startingTime={startingTime} currentTime={timeLeft} icon={'/clock.svg'}></Timer>*/}
-			</MainBody>
-
 		</div>
 	);
 }

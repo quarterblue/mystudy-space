@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+  width="33.39917"
+  height="21.39994"
+  viewBox="0 0 33.39917 21.39994"
+  fill="none"
+  version="1.1"
+  id="svg4"
+  sodipodi:docname="cloudrainless2.svg"
+  inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:svg="http://www.w3.org/2000/svg"
+>
+  <defs id="defs8" />
+  <sodipodi:namedview
+    id="namedview6"
+    pagecolor="#ffffff"
+    bordercolor="#666666"
+    borderopacity="1.0"
+    inkscape:pageshadow="2"
+    inkscape:pageopacity="0.0"
+    inkscape:pagecheckerboard="0"
+    showgrid="false"
+    fit-margin-top="0"
+    fit-margin-left="0"
+    fit-margin-right="0"
+    fit-margin-bottom="0"
+    inkscape:zoom="16"
+    inkscape:cx="16.03125"
+    inkscape:cy="19.28125"
+    inkscape:window-width="1858"
+    inkscape:window-height="1057"
+    inkscape:window-x="1134"
+    inkscape:window-y="363"
+    inkscape:window-maximized="1"
+    inkscape:current-layer="svg4"
+  />
+  <path
+    d="m 5.42017,10.22244 c -2.1311,0.492 -3.72113,2.4024 -3.72113,4.6776 0,2.6506 2.15763,4.7999 4.80353,4.7999 h 20.3924 c 2.6531,0 4.8035,-2.1541 4.8035,-4.7999 0,-2.2525 -1.5589,-4.1435 -3.6503,-4.6608 0.0335,-0.2424 0.0504,-0.4883 0.0504,-0.7392 0,-2.9821 -2.418,-5.4 -5.4,-5.4 -1.4711,0 -2.8045,0.5879 -3.7776,1.542 -1.1893,-2.3389 -3.618,-3.94205 -6.4224,-3.94205 -3.9769,0 -7.2,3.22315 -7.2,7.20005 0,0.4524 0.042,0.8941 0.121,1.3224 z m 23.8779,-0.8245 c 2.1217,0.9252 3.6011,3.0407 3.6011,5.5021 0,3.3071 -2.6855,5.9999 -5.9989,5.9999 H 6.49887 c -3.3203,0 -5.99887,-2.6869 -5.99887,-5.9999 0,-2.4611 1.48794,-4.5817 3.61447,-5.5056 -0.0096,-0.1631 -0.0145,-0.3276 -0.0145,-0.4944 0,-4.6393 3.7608,-8.40004 8.4,-8.40004 2.7576,0 5.2045,1.3283 6.7369,3.38034 1.0069,-0.6217 2.1935,-0.9803 3.4631,-0.9803 3.6107,0 6.5448,2.8992 6.5989,6.4979 z"
+    fill="#3A445D"
+    stroke="#000000"
+    id="path2"
+    style="
+      fill: #3a445d;
+      fill-opacity: 1;
+      stroke-linejoin: round;
+      stroke: #3a445d;
+      stroke-opacity: 1;
+    "
+    sodipodi:nodetypes="csssscsscsccccssssccscscc"
+  />
+</svg>
