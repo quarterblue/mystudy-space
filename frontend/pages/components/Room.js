@@ -1,12 +1,22 @@
 import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
+import DisplaySize from "./DisplaySize";
 
 const RoomContainer = styled.div`
   width: 25em;
   height: 25em;
   position: relative;
-  margin: auto;
+  margin: 0 auto 3em auto;
+  @media only screen and (max-width: ${DisplaySize["tablet"]}) {
+    width: 23em;
+    height: 24em;
+    margin: 0 auto 2em auto;
+  }
+  @media only screen and (max-width: ${DisplaySize["mobile"]}) {
+    width: 19em;
+    height: 20em;
+  }
 `;
 
 const BearContainer = styled.div`
@@ -34,22 +44,20 @@ const bearTypes = [
 
 const Room = ({ bears = [] }) => {
   return (
-    <>
-      <RoomContainer>
-        <Image src={"/room.png"} layout="fill" objectFit="contain" />
-        {bears.map((item) => (
-          <PositionContainer placement={bearTypes[item].pos}>
-            <BearContainer size={bearTypes[item].size}>
-              <Image
-                src={`/bears/${bearTypes[item].name}.png`}
-                layout="fill"
-                objectFit="contain"
-              />
-            </BearContainer>
-          </PositionContainer>
-        ))}
-      </RoomContainer>
-    </>
+    <RoomContainer>
+      <Image src={"/room.png"} layout="fill" objectFit="contain" />
+      {bears.map((item) => (
+        <PositionContainer placement={bearTypes[item].pos}>
+          <BearContainer size={bearTypes[item].size}>
+            <Image
+              src={`/bears/${bearTypes[item].name}.png`}
+              layout="fill"
+              objectFit="contain"
+            />
+          </BearContainer>
+        </PositionContainer>
+      ))}
+    </RoomContainer>
   );
 };
 
