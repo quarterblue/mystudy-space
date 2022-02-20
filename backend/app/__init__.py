@@ -4,12 +4,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routes import router
 from app.db.session import engine
 from app.routes.v1 import sub_router as v1_router
+from core.config import config
 
 
 def init_cors(app):
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],
+        allow_origins=[config.CORS_ALLOW_ORIGINS],
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],

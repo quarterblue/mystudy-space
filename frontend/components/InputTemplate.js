@@ -1,8 +1,9 @@
+import { useState, useContext } from "react";
+import {Context} from '../context/state';
 import styled from "styled-components";
 import PrimaryButton from "./PrimaryButton";
 import Input from "./Input";
 import RoomComponent from "./Room";
-import { useState } from "react";
 import DisplaySize from "./DisplaySize";
 import FooterComponent from "./Footer";
 import axios from "axios";
@@ -99,6 +100,8 @@ const StyledButton = styled(PrimaryButton)`
 `;
 
 const InputTemplate = ({ type = "register" }) => {
+  const {authData} = useContext(Context);
+  const [auth, setAuth] = authData;
   const [isSignUp, setIsSignUp] = useState(false);
   const [email, setEmail] = useState("");
   const [full_name, setName] = useState("");
@@ -124,6 +127,7 @@ const InputTemplate = ({ type = "register" }) => {
     params.append('password', password)
     let resp = await axios.post("http://localhost:9000/api/v1/auth/access-token", params);
     console.log(resp);
+    setAuth(resp.data.access_token);
   };
 
   const handleInput = (value, type) => {

@@ -3,7 +3,7 @@ import React, { useState, createContext } from "react";
 export const Context = createContext();
 
 const AppWrapper = (props) => {
-  const [auth, setAuth] = useState(5);
+  const [auth, setAuth] = useState('');
 
   const contextValue = {
     authData: [auth, setAuth],
