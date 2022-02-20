@@ -7,6 +7,7 @@ import RoomComponent from "./Room";
 import DisplaySize from "./DisplaySize";
 import FooterComponent from "./Footer";
 import axios from "axios";
+import { useRouter } from 'next/router'
 
 const LoginContainer = styled.div`
   background: #d4d2a5;
@@ -107,6 +108,8 @@ const InputTemplate = ({ type = "register" }) => {
   const [full_name, setName] = useState("");
   const [password, setPassword] = useState("");
 
+  const router = useRouter()
+
   const handleSignUp = async () => {
     setIsSignUp(true);
     let resp = await fetch("http://localhost:9000/api/v1/users", {
@@ -128,6 +131,9 @@ const InputTemplate = ({ type = "register" }) => {
     let resp = await axios.post("http://localhost:9000/api/v1/auth/access-token", params);
     console.log(resp);
     setAuth(resp.data.access_token);
+    if (resp.data) {
+      router.push('/');
+    }
   };
 
   const handleInput = (value, type) => {
@@ -157,16 +163,19 @@ const InputTemplate = ({ type = "register" }) => {
             <Input
               title={"EMAIL"}
               type={"email"}
+              login={'true'}
               inputValue={(e) => handleInput(e, "email")}
               required
             ></Input>
             <Input
               title={"NAME"}
+              login={'true'}
               inputValue={(e) => handleInput(e, "name")}
               required
             ></Input>
             <Input
               title={"PASSWORD"}
+              login={'true'}
               inputValue={(e) => handleInput(e, "password")}
               type={"password"}
               required
@@ -182,12 +191,14 @@ const InputTemplate = ({ type = "register" }) => {
           <InputComponents>
             <Input
               title={"EMAIL"}
+              login={'true'}
               inputValue={(e) => handleInput(e, "email")}
               required
             ></Input>
 
             <Input
               title={"PASSWORD"}
+              login={'true'}
               inputValue={(e) => handleInput(e, "password")}
               required
               type={"password"}
@@ -198,7 +209,7 @@ const InputTemplate = ({ type = "register" }) => {
               content={<b>LOGIN</b>}
               onClick={handleLogIn}
             ></StyledButton>
-            <SignUp onClick={handleSignUp}>SIGN UP</SignUp>
+            <SignUp onClick={() => router.push('/register')}>SIGN UP</SignUp>
           </InputComponents>
         )}
       </LoginBody>

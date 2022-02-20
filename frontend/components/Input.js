@@ -44,7 +44,7 @@ const StyledInput = styled(AntInput)`
 //   console.log("value", e.target.value);
 // };
 
-const Input = ({ title = "", inputValue, ...props }) => {
+const Input = ({ title = "", login=false, inputValue, ...props }) => {
   const handleInput = (e) => {
     // console.log("blur e", e, e.target.value);
     return inputValue(e.target.value);
@@ -54,9 +54,7 @@ const Input = ({ title = "", inputValue, ...props }) => {
     <InputContainer>
       <StyledTitle>{title}</StyledTitle>
       <StyledInput
-        // onChange={handleChange}
-        // onPressEnter={console.log("entered")}
-        onBlur={handleInput}
+        onBlur={login ? handleInput : null}
         {...props}
       ></StyledInput>
     </InputContainer>
