@@ -35,7 +35,7 @@ const Title = styled.div`
 const Footer = styled.div`
   text-align: center;
   font-size: 12px;
-	
+
   position: absolute;
   bottom: 1rem;
   left: 0;
@@ -49,7 +49,7 @@ const StyledImage = styled.img`
 
   @media (max-width: 1024px) {
     width: 60%;
-	align-self: center;
+    align-self: center;
   }
 `;
 
@@ -88,27 +88,27 @@ const RightSignUpComponent = styled.div`
   @media (max-width: 1024px) {
     width: 100%;
   }
-`
+`;
 
-const LoginComponent = ({ img, handleLogin, handleSignup }) => {
+const LoginComponent = ({img, handleLogin, handleSignup}) => {
 	const [ isSignUp, setIsSignUp ] = useState(false);
 
 	const handleSignUp = () => {
 		setIsSignUp(true);
-	}
+	};
 
 	return (
 		<LoginContainer>
 			<Title>My Study Space</Title>
 			<LoginBody>
 				<StyledImage src={img} alt={'room'}></StyledImage>
-					{isSignUp ?
-						<RightLoginComponent>
-							<LoginInput title={'EMAIL'} type={'email'} required></LoginInput>
-							<LoginInput title={'NAME'} required></LoginInput>
-							<LoginInput title={'PASSWORD'} type={'password'} required></LoginInput>
-							<PrimaryButton width={'100%'} type={'primary'} content={'SIGN UP'}></PrimaryButton>
-						</RightLoginComponent> :
+				{isSignUp ?
+					<RightLoginComponent>
+						<LoginInput title={'EMAIL'} type={'email'} required></LoginInput>
+						<LoginInput title={'NAME'} required></LoginInput>
+						<LoginInput title={'PASSWORD'} type={'password'} required></LoginInput>
+						<PrimaryButton width={'100%'} type={'primary'} content={'SIGN UP'}></PrimaryButton>
+					</RightLoginComponent> :
 					<RightSignUpComponent>
 						<LoginInput title={'EMAIL'} required></LoginInput>
 						<LoginInput title={'PASSWORD'} required type={'password'}></LoginInput>

@@ -6,6 +6,7 @@ import styled from "styled-components";
 import LoginComponent from "./components/LoginComponent";
 import Timer from "./components/Timer";
 import RoomComponent from "./components/Room";
+import Modal from "./components/Modal";
 
 const Title = styled.span`
   font-size: 72px;
@@ -46,6 +47,7 @@ export default function Home() {
         <meta name="description" content="My study space." />
         <link rel="icon" href="/panda-icon.svg" />
       </Head>
+      {/*<Modal visible={true} closable={false}></Modal>*/}
 
       <MainBody>
         {/*<LoginComponent img={'/room.png'}></LoginComponent>*/}
