@@ -2,3 +2,5 @@ fastapi
 SQLAlchemy
 uvicorn
 pydantic
+pydantic[email]
+psycopg2-binary
