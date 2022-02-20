@@ -64,3 +64,18 @@ def get_current_user(
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return user
+
+
+@user_router.get("/{user_name}", response_model=schemas.User)
+def get_single_user(
+    user_name: str,
+    db: Session = Depends(deps.get_db)
+) -> Any:
+    """ Get a specific user by email """
+    user = db.query(models.User).filter(models.User.email == user_name).first()
+    if not user:
+        raise HTTPException(
+            status_code=404,
+            detail="The user with this username does not exist in the system",
+        )
+    return user
