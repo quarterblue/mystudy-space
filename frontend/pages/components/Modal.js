@@ -18,6 +18,8 @@ const StyledModal = styled(AntModal)`
 	line-height: 36px;
 	text-align: center;
 	height: fit-content;
+    font-family: "Barlow", sans-serif;
+	color: #3A445D;
   }
 
   & .ant-modal-footer {
@@ -38,8 +40,11 @@ const StyledModal = styled(AntModal)`
     align-items: center;
     justify-content: center;
 	border: 3px solid #3A445D;
+    font-family: "Barlow", sans-serif;
+	color: #3A445D;
 
     @media (max-width: 1024px) {
+	  height: 95vh;
 	  border-radius: 0;
 	  overflow: hidden;
       margin: 0;

@@ -6,15 +6,19 @@ import DisplaySize from "./DisplaySize";
 const RoomContainer = styled.div`
   width: 25em;
   height: 25em;
+  min-width: 20em;
+  min-height: 20em;
   position: relative;
   margin: 0 auto 3em auto;
+  aspect-ratio: 1/1;
+
   @media only screen and (max-width: ${DisplaySize["tablet"]}) {
     width: 23em;
-    height: 24em;
+    height: 23em;
     margin: 0 auto 2em auto;
   }
   @media only screen and (max-width: ${DisplaySize["mobile"]}) {
-    width: 19em;
+    width: 20em;
     height: 20em;
   }
 `;
