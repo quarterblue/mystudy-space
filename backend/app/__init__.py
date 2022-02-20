@@ -2,6 +2,7 @@ from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.routes import router
+from app.db.session import engine
 from app.routes.v1 import sub_router as v1_router
 
 
@@ -34,3 +35,11 @@ def create_app():
 
 
 app = create_app()
+
+models.Base.metadata.create_all(engine)
+
+# from . import scripts
+
+# @app.on_event("startup")
+# def startup_event():
+#     scripts.run_startup_scripts()

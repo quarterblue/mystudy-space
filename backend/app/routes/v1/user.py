@@ -5,6 +5,7 @@ from app import models, schemas
 from app.routes import deps
 from sqlalchemy.orm import Session
 from pydantic.networks import EmailStr
+from core.security import get_password_hash
 
 user_router = APIRouter()
 
@@ -19,7 +20,7 @@ def create_user(
 ) -> Any:
     """ Create a new user """
 
-    user = db.query(User).filter(User.email == email).first()
+    user = db.query(models.User).filter(models.User.email == email).first()
 
     if user:
         raise HTTPException(
@@ -27,7 +28,7 @@ def create_user(
             detail="The user with this username already exists."
         )
 
-    user_obj = User(
+    user_obj = models.User(
         email=email,
         hashed_password=get_password_hash(password),
         full_name=full_name,
