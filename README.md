@@ -33,6 +33,26 @@
   </p>
 </p>
 
+## ✨ Inspiration
+Being students, our team wanted to address the issues of self-study and motivation, especially during these pandemic times where school has shifted primarily online. Inspired by applications such as Daylio and Forest, we hope to provide an all-in-one platform that aims to address these issues using methods such as the Pomodoro technique, mood journaling, and gamification.
+
+## 💻 What it does
+<b>Study in Peace</b>
+
+Employing the Pomodoro technique, set your preferred study intervals, the number of intervals, and the break time in-between. The application will automatically do the rest and log your study time on a timeline to further increase accountability. Furthermore, to assist with managing distractions, the rain mode will dim the screen and play a relaxing rain ambiance to help you stay focused.
+
+<b>Track your Mood</b>
+
+Following every time interval, a mood tracking questionnaire will check up on you on your current mood using a simple scale that is automatically recorded to the timeline. Based on your response, an idea of how to spend your break will appear that will get you primed and ready for the next interval.
+
+<b>Collect Plushies</b>
+
+During your studies, you may notice that your room gradually fills with adorable plushies. To further incentivize studying, we added the ability to collect plushies as you complete study sessions to fill your virtual room.
+
+<b>Share With Friends</b>
+
+Share your accomplishments with your friends by sending them a custom URL linking to your virtual room and show off your collection of plushies. While they're there, they may be able to leave a special plushie as a gift to signify your friendship.
+
 ## ⚡️ Quick start
 
 First of all, [download](https://nodejs.org/en/) and install **Node.js**. Version `14.7.0 LTS` or higher is recommended.
