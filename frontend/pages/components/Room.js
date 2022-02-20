@@ -2,19 +2,24 @@ import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import DisplaySize from "./DisplaySize";
+import bearTypes from "./BearTypes";
 
 const RoomContainer = styled.div`
   width: 25em;
   height: 25em;
+  min-width: 20em;
+  min-height: 20em;
   position: relative;
   margin: 0 auto 3em auto;
+  aspect-ratio: 1/1;
+
   @media only screen and (max-width: ${DisplaySize["tablet"]}) {
     width: 23em;
-    height: 24em;
+    height: 23em;
     margin: 0 auto 2em auto;
   }
   @media only screen and (max-width: ${DisplaySize["mobile"]}) {
-    width: 19em;
+    width: 20em;
     height: 20em;
   }
 `;
@@ -33,14 +38,14 @@ const PositionContainer = styled.div`
   left: ${(props) => (props.placement ? props.placement[1] + "%" : 0)};
 `;
 
-const bearTypes = [
-  { name: "friends", pos: [30, 44] },
-  { name: "slouching", pos: [59, 38] },
-  { name: "training", pos: [23, 60], size: 2.5 },
-  { name: "optimistic", pos: [45, 62], size: 2.3 },
-  { name: "rich", pos: [65, 75], size: 2.8 },
-  { name: "modern", pos: [71, 24], size: 2.6 },
-];
+// const bearTypes = [
+//   { name: "friends", pos: [30, 44] },
+//   { name: "slouching", pos: [59, 38] },
+//   { name: "training", pos: [23, 60], size: 2.5 },
+//   { name: "optimistic", pos: [45, 62], size: 2.3 },
+//   { name: "rich", pos: [65, 75], size: 2.8 },
+//   { name: "modern", pos: [71, 24], size: 2.6 },
+// ];
 
 const Room = ({ bears = [] }) => {
   return (
