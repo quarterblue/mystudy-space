@@ -1,4 +1,5 @@
 import os
+import secrets
 
 from pydantic import BaseSettings
 
@@ -8,6 +9,8 @@ class Config(BaseSettings):
     APP_HOST: str = "0.0.0.0"
     APP_PORT: int = 9000
     DATABSE_URL: str = ""
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 5000
+    SECRET_KEY: str = secrets.token_urlsafe(32)
     SQLALCHEMY_DATABASE_URI: str = "postgresql://postgres:password@db/stormhack"
 
 

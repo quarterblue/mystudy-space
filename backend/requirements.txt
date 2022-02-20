@@ -5,3 +5,5 @@ pydantic
 pydantic[email]
 psycopg2-binary
 passlib
+python-multipart
+python-jose
