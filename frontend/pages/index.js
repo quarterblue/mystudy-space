@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import LoginComponent from './components/LoginComponent';
 import Timer from './components/Timer';
+import Modal from './components/Modal';
 
 const Title = styled.span`
   font-size: 72px;
@@ -46,9 +47,11 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico"/>
 			</Head>
 
+			{/*<Modal visible={true} closable={false}></Modal>*/}
+
 			<MainBody>
-				{/*<LoginComponent img={'/room.png'}></LoginComponent>*/}
-				<Timer startingTime={startingTime} currentTime={timeLeft} icon={'/clock.svg'}></Timer>
+				<LoginComponent img={'/room.png'}></LoginComponent>
+				{/*<Timer startingTime={startingTime} currentTime={timeLeft} icon={'/clock.svg'}></Timer>*/}
 			</MainBody>
 
 		</div>
