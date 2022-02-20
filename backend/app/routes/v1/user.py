@@ -35,6 +35,7 @@ def create_user(
         email=email,
         hashed_password=get_password_hash(password),
         full_name=full_name,
+        plushie=0,
     )
 
     db.add(user)
@@ -58,7 +59,8 @@ def get_current_user(
             detail="Could not validate credentials",
         )
     # user = crud.user.get(db, id=token_data.sub)
-    user = db.query(models.User).filter(models.User.id == token_data.sub).first()
+    user = db.query(models.User).filter(
+        models.User.id == token_data.sub).first()
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return user
