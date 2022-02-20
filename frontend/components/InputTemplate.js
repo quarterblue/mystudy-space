@@ -5,6 +5,7 @@ import RoomComponent from "./Room";
 import { useState } from "react";
 import DisplaySize from "./DisplaySize";
 import FooterComponent from "./Footer";
+import axios from "axios";
 
 const LoginContainer = styled.div`
   background: #d4d2a5;
@@ -117,15 +118,12 @@ const InputTemplate = ({ type = "register" }) => {
   };
 
   const handleLogIn = async () => {
-    let resp = await fetch("http://localhost:9000/api/v1/auth/access-token", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      crdentials: "include",
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
+    console.log('handle log')
+    const params = new URLSearchParams();
+    params.append('username', email)
+    params.append('password', password)
+    let resp = await axios.post("http://localhost:9000/api/v1/auth/access-token", params);
+    console.log(resp);
   };
 
   const handleInput = (value, type) => {
@@ -173,19 +171,20 @@ const InputTemplate = ({ type = "register" }) => {
               width={"100%"}
               type={"primary"}
               content={"SIGN UP"}
+              onClick={handleSignUp}
             ></StyledButton>
           </InputComponents>
         ) : (
           <InputComponents>
             <Input
               title={"EMAIL"}
-              inputValue={(handleInput, "email")}
+              inputValue={(e) => handleInput(e, "email")}
               required
             ></Input>
 
             <Input
               title={"PASSWORD"}
-              inputValue={(handleInput, "password")}
+              inputValue={(e) => handleInput(e, "password")}
               required
               type={"password"}
             ></Input>
@@ -193,6 +192,7 @@ const InputTemplate = ({ type = "register" }) => {
               width={"100%"}
               type={"primary"}
               content={<b>LOGIN</b>}
+              onClick={handleLogIn}
             ></StyledButton>
             <SignUp onClick={handleSignUp}>SIGN UP</SignUp>
           </InputComponents>
