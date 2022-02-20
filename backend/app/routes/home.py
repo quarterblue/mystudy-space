@@ -6,8 +6,4 @@ router = APIRouter()
 
 @router.get("/")
 async def health_status():
-    return {
-        "status": "available",
-        "environment": os.getenv("ENV"),
-        "version": "1.0.0"
-    }
+    return {"status": "available", "environment": os.getenv("ENV"), "version": "1.0.0"}

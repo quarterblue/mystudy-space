@@ -22,14 +22,13 @@ def create_user(
     email: EmailStr = Body(...),
     full_name: str = Body(None),
 ) -> Any:
-    """ Create a new user """
+    """Create a new user"""
 
     user = db.query(models.User).filter(models.User.email == email).first()
 
     if user:
         raise HTTPException(
-            status_code=400,
-            detail="The user with this username already exists."
+            status_code=400, detail="The user with this username already exists."
         )
 
     user = models.User(
@@ -47,14 +46,11 @@ def create_user(
 
 @user_router.get("/current", response_model=schemas.User)
 def get_current_user(
-    db: Session = Depends(deps.get_db),
-    token: str = Depends(deps.reusable_oauth2)
+    db: Session = Depends(deps.get_db), token: str = Depends(deps.reusable_oauth2)
 ) -> Any:
-    """ Get current user. """
+    """Get current user."""
     try:
-        payload = jwt.decode(
-            token, config.SECRET_KEY, algorithms=[ALGORITHM]
-        )
+        payload = jwt.decode(token, config.SECRET_KEY, algorithms=[ALGORITHM])
         token_data = schemas.TokenPayload(**payload)
     except (jwt.JWTError, ValidationError):
         raise HTTPException(
@@ -62,8 +58,7 @@ def get_current_user(
             detail="Could not validate credentials",
         )
     # user = crud.user.get(db, id=token_data.sub)
-    user = db.query(models.User).filter(
-        models.User.id == token_data.sub).first()
+    user = db.query(models.User).filter(models.User.id == token_data.sub).first()
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return user
