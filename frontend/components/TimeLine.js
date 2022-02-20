@@ -20,7 +20,6 @@ const StyledHeading = styled.h1`
 const StyledDrawer = styled(Drawer)`
   display: flex;
   .ant-drawer-header {
-    /* display: none; */
     background: #e9e8d2;
   }
   .ant-drawer-wrapper-body {
@@ -46,7 +45,6 @@ const StyledDrawer = styled(Drawer)`
     padding: 0.5em;
     border: 2px solid transparent;
     :hover {
-      /* filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.2)); */
       border: 2px solid #928779;
     }
   }
@@ -65,7 +63,6 @@ const LeftSection = styled.div`
 `;
 const RightSection = styled.div`
   width: 100%;
-  /* overflow: auto; */
   margin-left: 20px;
   scrollbar-width: none;
 `;
