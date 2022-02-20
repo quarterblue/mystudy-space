@@ -12,15 +12,15 @@ const ClockInput = styled.button`
   color: #3a445d;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
+  cursor: ${(props) => (props.disabled ? 'inherit' : 'pointer')};
   padding: 12px;
   transition: all 0.1s;
-  background-color: #d4d2a5;
+  background-color: transparent;
   border: 2px solid transparent;
 
   :hover {
     /* transform: translateY(-1px); */
-    border: 2px solid ${(props) => (props.hasStarted ? '#EFD5C3' : '#3A445D')};
+    border: 2px solid ${(props) => (props.disabled ? 'transparent' : '#3A445D')};
   }
 `;
 
@@ -70,9 +70,10 @@ const Timer = ({
 				   setCount = 0,
 				   currStep = 1,
 				   steps = 3,
+				   disabled = false,
 			   }) => {
 	return (
-		<ClockInput onClick={onClick}>
+		<ClockInput onClick={onClick} disabled={disabled}>
 			<StepCounter>
 				SET {currStep} OF {steps}
 			</StepCounter>

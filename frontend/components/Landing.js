@@ -10,24 +10,9 @@ import useWindowSize from 'react-use/lib/useWindowSize';
 import Timer from './Timer';
 import RoomComponent from './Room';
 import TimelineComponent from './TimeLine';
+import ReactAudioPlayer from 'react-audio-player';
 
 import styled, { keyframes } from 'styled-components';
-
-const RainAnimation = keyframes`
-  from {
-    background: radial-gradient(circle, rgba(0, 0, 176, 0) 0%, rgba(0, 0, 0, 0) 84%, rgba(0, 0, 0, 0.28896769889596463) 100%);
-  }
-  to {
-    background: radial-gradient(circle, rgba(0, 0, 176, 0) 0%, rgba(0, 0, 0, 0) 84%, rgba(0, 0, 0, 0.4794438893721551) 100%);
-  }
-`;
-
-const RainEffect = styled.div`
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  animation: 1s ${RainAnimation} infinite alternate-reverse;
-`;
 
 const TimerContainer = styled.div`
   margin: 5em auto 2em auto;
@@ -51,7 +36,10 @@ const LandingContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background-color: #D4D2A5;
   gap: 0;
+  filter: ${(props) => props.raining ? 'brightness(80%)' : 'none'};
+  transition: filter 1s;
 
   @media only screen and (max-width: 1024px) {
     background-color: ${(props) => props.modalOpen ? '#E9E8D2;' : 'inherit'}
@@ -102,6 +90,7 @@ const PlushieImage = styled.div`
 `;
 
 const Landing = ({}) => {
+	const [ audio, setAudio ] = useState(null);
 	const {width, height} = useWindowSize();
 	const [ startingTime, setStartingTime ] = useState(25 * 60);
 	const [ numberOfSets, setNumberOfSets ] = useState(4);
@@ -138,7 +127,7 @@ const Landing = ({}) => {
 	];
 
 	const plushies = [
-		'friends',
+		'friendly',
 		'slouching',
 		'training',
 		'optimistic',
@@ -151,14 +140,14 @@ const Landing = ({}) => {
 		if (currentInterval >= numberOfSets) {
 			handleSetCompletion();
 		} else {
-			//open self help
 			setSurveyOpen(true);
 			setTimeLeft(startingTime);
 		}
-		console.log('hi');
 	};
 
 	const handleSetCompletion = () => {
+		setMood(null);
+		setCurrentTip(null);
 		setNumberOfSets(4);
 		setCurrentInterval(1);
 		setTimeLeft(startingTime);
@@ -192,6 +181,7 @@ const Landing = ({}) => {
 
 	const handleMusicClick = () => {
 		setPlayMusic(!playMusic);
+		playMusic ? audio?.pause() : audio?.play();
 	};
 
 	const handleSettingsOpen = () => {
@@ -220,6 +210,8 @@ const Landing = ({}) => {
 
 	const handleBreakDone = () => {
 		if (breakTimeLeft <= 0) {
+			setMood(null);
+			setCurrentTip(null);
 			setSurveyOpen(false);
 			setHasStarted(true);
 		}
@@ -257,10 +249,12 @@ const Landing = ({}) => {
 
 	return (
 		<>
+			{playMusic ? <ReactAudioPlayer src={'/rain.mp3'} loop={true} autoPlay={true}/> : <></>}
 			{setCompleted ? <Confetti width={width} height={height}></Confetti> : <></>}
-			<LandingContainer modalOpen={settingsOpen} raining={playMusic}>
+			<LandingContainer modalOpen={settingsOpen || surveyOpen || setCompleted} raining={playMusic}>
 				<TimerContainer>
 					<Timer
+						disabled={hasStarted}
 						currStep={currentInterval}
 						steps={numberOfSets}
 						startingTime={startingTime}
@@ -274,7 +268,7 @@ const Landing = ({}) => {
 				<ButtonContainer>
 					<StyledButton
 						primary={false}
-						content={`music: ${playMusic ? 'on' : 'off'}`}
+						content={`rain: ${playMusic ? 'on' : 'off'}`}
 						icon={`${playMusic ? 'rain-' : ''}cloud`}
 						onClick={handleMusicClick}
 					/>
@@ -284,6 +278,7 @@ const Landing = ({}) => {
 						icon={'arrow'}
 						style={{fontWeight: 700, letterSpacing: '0.05em'}}
 						onClick={handlePlay}
+						disabled={hasStarted}
 					/>
 				</ButtonContainer>
 				<Modal
