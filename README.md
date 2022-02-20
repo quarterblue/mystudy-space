@@ -106,6 +106,7 @@ You might need to wait a couple minutes for everything in docker to be loaded.
 - [x] Send plushie to friends!
 - [x] Browse friends personal room
 - [x] Self-help & mood tracker
+- [x] Calm and soothing rain music
 
 ## Directory Structure
 - backend (Where the backend code is stored, python flask is used as the backend server)
