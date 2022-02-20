@@ -41,10 +41,10 @@ def get_timelines(
     db_query = (
         db.query(models.Timeline)
         .filter(models.Timeline.user_id == current_user.id)
+        .order_by("date_time")
         .offset(skip)
         .limit(limit)
         .all()
     )
 
-    print(db_query)
     return db_query
