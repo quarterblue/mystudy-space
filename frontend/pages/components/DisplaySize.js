@@ -4,5 +4,6 @@ const DisplaySize = {
   tablet: "768px",
   "m-tablet": "810px",
   "l-tablet": "1024px",
+  "desktop": "1920px",
 };
 export default DisplaySize;

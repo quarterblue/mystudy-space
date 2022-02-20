@@ -16,47 +16,47 @@ const Title = styled.span`
 `;
 
 const MainBody = styled.div`
-  background-color: #d4d2a5;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
+    background-color: #d4d2a5;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
 `;
 
 export default function Home() {
-  // const startingTime = 20;
-  // const [hasStarted, setHasStarted] = useState(false);
-  // const [timeLeft, setTimeLeft] = useState(startingTime); //25 minute default
+    // const startingTime = 20;
+    // const [hasStarted, setHasStarted] = useState(false);
+    // const [timeLeft, setTimeLeft] = useState(startingTime); //25 minute default
 
-  // const handleTimesUp = () => {
-  //   console.log("hi");
-  // };
+    // const handleTimesUp = () => {
+    //   console.log("hi");
+    // };
 
-  // useEffect(() => {
-  //   if (timeLeft === 0) {
-  //     handleTimesUp();
-  //     return;
-  //   }
-  //   setTimeout(() => {
-  //     setTimeLeft(timeLeft - 1);
-  //   }, 1000);
-  // }),
-  //   [timeLeft, hasStarted];
+    // useEffect(() => {
+    //   if (timeLeft === 0) {
+    //     handleTimesUp();
+    //     return;
+    //   }
+    //   setTimeout(() => {
+    //     setTimeLeft(timeLeft - 1);
+    //   }, 1000);
+    // }),
+    //   [timeLeft, hasStarted];
 
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>My Study Space</title>
-        <meta name="description" content="My study space." />
-        <link rel="icon" href="/panda-icon.svg" />
-      </Head>
-      {/*<Modal visible={true} closable={false}></Modal>*/}
+    return (
+        <div className={styles.container}>
+            <Head>
+                <title>My Study Space</title>
+                <meta name="description" content="My study space." />
+                <link rel="icon" href="/panda-icon.svg" />
+            </Head>
+            {/*<Modal visible={true} closable={false}></Modal>*/}
 
-      <MainBody>
-        <Landing />
-        {/*<LoginComponent img={'/room.png'}></LoginComponent>*/}
-        {/* <TimerContainer>
+            <MainBody>
+                <Landing />
+                {/*<LoginComponent img={'/room.png'}></LoginComponent>*/}
+                {/* <TimerContainer>
           <Timer
             startingTime={startingTime}
             currentTime={timeLeft}
@@ -78,8 +78,8 @@ export default function Home() {
           />
         </ButtonContainer> */}
 
-        <></>
-      </MainBody>
-    </div>
-  );
+                <></>
+            </MainBody>
+        </div>
+    );
 }

@@ -9,13 +9,22 @@ const StyledModal = styled(AntModal)`
 
   & .ant-modal-header {
     border: 0px;
+    background-color: #E9E8D2;
+  }
+
+  & .ant-modal-title {
+	padding-top: 60px;
+    font-size: 36px;
+	line-height: 36px;
+	text-align: center;
+	height: fit-content;
+    font-family: "Barlow", sans-serif;
+	color: #3A445D;
   }
 
   & .ant-modal-footer {
     border: 0px;
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-top: 5px;
+	padding-bottom: 60px;
   }
 
   & .ant-select-selection {
@@ -23,19 +32,34 @@ const StyledModal = styled(AntModal)`
   }
 
   & .ant-modal-content {
+	overflow: hidden;
 	background-color: #E9E8D2;
     border-radius: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+	border: 3px solid #3A445D;
+    font-family: "Barlow", sans-serif;
+	color: #3A445D;
+
+    @media (max-width: 1024px) {
+	  height: 95vh;
+	  border-radius: 0;
+	  overflow: hidden;
+      margin: 0;
+	  padding: 0;
+      top: 0;
+	  box-shadow: none;
+	  border: none;
+    }
   }
 `
 
-const Modal = ({ ...props }) => {
+const Modal = ({ children, ...props }) => {
 	return (
 		<StyledModal {...props}>
-			hi
+			{children}
 		</StyledModal>
 	);
 }

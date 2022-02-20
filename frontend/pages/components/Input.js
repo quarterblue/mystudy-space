@@ -1,4 +1,4 @@
-import { Input } from 'antd';
+import { Input as AntInput } from 'antd';
 import styled from 'styled-components';
 
 const InputContainer = styled.div`
@@ -10,26 +10,29 @@ const StyledTitle = styled.span`
   font-size: 20px;
 `;
 
-const StyledInput = styled(Input)`
+const StyledInput = styled(AntInput)`
   margin-top: 8px;
   height: 52px;
-  background-color: #E9E8D2;
+  background-color: #F7F7EF;
   border: #3A445D solid 3px;
   border-radius: 12px;
   width: ${(props) => props.width || '100%'};
-
+  border-right-width: 3px !important;
+  
   :hover {
     border: #3A445D solid 3px;
     box-shadow: none;
+    border-right-width: 3px !important;
   }
 
   :focus {
     border: #3A445D solid 3px;
     box-shadow: none;
+    border-right-width: 3px !important;
   }
 `;
 
-const LoginInput = ({title = '', ...props}) => {
+const Input = ({title = '', ...props}) => {
 	return (
 		<InputContainer>
 			<StyledTitle>{title}</StyledTitle>
@@ -38,4 +41,4 @@ const LoginInput = ({title = '', ...props}) => {
 	);
 };
 
-export default LoginInput;
+export default Input;

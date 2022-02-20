@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import PrimaryButton from './PrimaryButton';
-import LoginInput from './LoginInput';
+import Input from './Input';
 import { useState } from 'react';
 
 const LoginContainer = styled.div`
@@ -104,14 +104,14 @@ const LoginComponent = ({img, handleLogin, handleSignup}) => {
 				<StyledImage src={img} alt={'room'}></StyledImage>
 				{isSignUp ?
 					<RightLoginComponent>
-						<LoginInput title={'EMAIL'} type={'email'} required></LoginInput>
-						<LoginInput title={'NAME'} required></LoginInput>
-						<LoginInput title={'PASSWORD'} type={'password'} required></LoginInput>
+						<Input title={'EMAIL'} type={'email'} required></Input>
+						<Input title={'NAME'} required></Input>
+						<Input title={'PASSWORD'} type={'password'} required></Input>
 						<PrimaryButton width={'100%'} type={'primary'} content={'SIGN UP'}></PrimaryButton>
 					</RightLoginComponent> :
 					<RightSignUpComponent>
-						<LoginInput title={'EMAIL'} required></LoginInput>
-						<LoginInput title={'PASSWORD'} required type={'password'}></LoginInput>
+						<Input title={'EMAIL'} required></Input>
+						<Input title={'PASSWORD'} required type={'password'}></Input>
 						<PrimaryButton width={'100%'} type={'primary'} content={<b>LOGIN</b>}></PrimaryButton>
 						<SignUp onClick={handleSignUp}>SIGN UP</SignUp>
 					</RightSignUpComponent>

@@ -1,18 +1,18 @@
-import styled from "styled-components";
-import Image from "next/image";
-import DisplaySize from "./DisplaySize";
+import styled from 'styled-components';
+import Image from 'next/image';
+import DisplaySize from './DisplaySize';
 
 const StyledButton = styled.button`
-  background-color: ${(props) => (props.primary ? "#3A445D" : "#D4D2A5")};
+  background-color: ${(props) => (props.primary ? '#3A445D' : '#D4D2A5')};
   border-radius: 12px;
   min-width: ${(props) => props.width};
   height: 52px;
   border-style: none;
-  color: ${(props) => (props.primary ? "#E9E8D2" : "#3A445D")};
-  border: ${(props) => (props.primary ? "none" : "3px #3A445D solid")};
+  color: ${(props) => (props.primary ? '#E9E8D2' : '#3A445D')};
+  border: ${(props) => (props.primary ? 'none' : '3px #3A445D solid')};
   font-size: 2.4rem;
   margin-top: 12px;
-  cursor: pointer;
+  cursor: ${(props) => props.disabled ? 'not-allowed' : 'pointer'};
   transition: all 0.1s ease-in;
   display: flex;
   justify-content: center;
@@ -22,39 +22,42 @@ const StyledButton = styled.button`
   width: 21rem;
   font-weight: 500;
   text-transform: uppercase;
+  filter: ${(props) => props.disabled ? 'brightness(70%)' : ''};
 
   :hover {
-    filter: brightness(80%);
+    filter: ${(props) => props.disabled ? '' : 'brightness(80%)'};
   }
-  @media only screen and (max-width: ${DisplaySize["mobile"]}) {
+
+  @media only screen and (max-width: ${DisplaySize['mobile']}) {
     font-size: 2rem;
   }
 `;
 
 const PrimaryButton = ({
-  primary = true,
-  icon,
-  content = "",
-  width = "100px",
-  ...props
-}) => {
-  return (
-    <div>
-      {console.log("icon", `/icons/${icon}.svg`)}
-      <StyledButton primary={primary} width={width} {...props}>
-        {icon ? (
-          <Image
-            height={primary ? 24 : 32}
-            width={primary ? 24 : 32}
-            src={`/icons/${icon}.svg`}
-          ></Image>
-        ) : (
-          <></>
-        )}
-        {content}
-      </StyledButton>
-    </div>
-  );
+						   primary = true,
+						   disabled = false,
+						   icon,
+						   content = '',
+						   width = '100px',
+						   ...props
+					   }) => {
+	return (
+		<div>
+			{console.log('icon', `/icons/${icon}.svg`)}
+			<StyledButton disabled={disabled} primary={primary} width={width} {...props}>
+				{icon ? (
+					<Image
+						height={primary ? 24 : 32}
+						width={primary ? 24 : 32}
+						src={`/icons/${icon}.svg`}
+					></Image>
+				) : (
+					<></>
+				)}
+				{content}
+			</StyledButton>
+		</div>
+	);
 };
 
 export default PrimaryButton;
