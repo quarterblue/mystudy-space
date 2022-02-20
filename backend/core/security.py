@@ -1,7 +1,11 @@
 from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 from typing import Any, List, Optional, Union
-from app.models.user import User
+
+from app.routes import deps
+from fastapi import APIRouter, Body, Depends, HTTPException
+
+from app import models, schemas
 from core.config import config
 
 from datetime import datetime, timedelta
@@ -13,8 +17,8 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 ALGORITHM = "HS256"
 
 
-def get_by_email(db: Session, *, email: str) -> Optional[User]:
-    return db.query(User).filter(User.email == email).first()
+def get_by_email(db: Session, *, email: str) -> Optional[models.User]:
+    return db.query(models.User).filter(models.User.email == email).first()
 
 
 def create_access_token(
@@ -32,12 +36,34 @@ def create_access_token(
     return encoded_jwt
 
 
-def authenticate(db: Session, *, email: str, password: str) -> Optional[User]:
+def authenticate(db: Session, *, email: str, password: str) -> Optional[models.User]:
     user = get_by_email(db, email=email)
     if not user:
         return None
     if not verify_password(password, user.hashed_password):
         return None
+    return user
+
+
+def get_current_user(
+    db: Session = Depends(deps.get_db), token: str = Depends(deps.reusable_oauth2)
+) -> models.User:
+    try:
+        payload = jwt.decode(
+            token, config.SECRET_KEY, algorithms=[ALGORITHM]
+        )
+        token_data = schemas.TokenPayload(**payload)
+    except (jwt.JWTError, ValidationError):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Could not validate credentials",
+        )
+
+    user = db.query(models.User).filter(
+        models.User.id == token_data.sub).first()
+
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
     return user
 
 

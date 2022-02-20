@@ -35,11 +35,4 @@ def create_app():
 
 
 app = create_app()
-
 models.Base.metadata.create_all(engine)
-
-# from . import scripts
-
-# @app.on_event("startup")
-# def startup_event():
-#     scripts.run_startup_scripts()
