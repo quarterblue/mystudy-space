@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="./public/intropic.png">
-    <img width="60%" src="./public/inVtropic.png" alt="mystudy-space logo">
+    <img width="60%" src="./public/intropic.png" alt="mystudy-space logo">
   </a>
   <p align="center">
 <!--     <a href="https://github.com/gitlab-analyzer/gitlabanalyzer/blob/master/LICENSE" target="_blank">
