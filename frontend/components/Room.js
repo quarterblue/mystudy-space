@@ -6,11 +6,14 @@ import bearTypes from "./BearTypes";
 
 const RoomContainer = styled.div`
   width: 25em;
-  height: 25em;
+  height: ${(props) => (props.login ? "80% " : "25em")};
+  /* height: 25em; */
   min-width: 20em;
   min-height: 20em;
   position: relative;
-  margin: 0 auto 3em auto;
+  margin: ${(props) => (props.login ? "auto 0" : "0 auto 3em auto")};
+  /* margin: 0 auto 3em auto; */
+  /* margin: 0 auto 3em auto; */
   aspect-ratio: 1/1;
 
   @media only screen and (max-width: ${DisplaySize["tablet"]}) {
@@ -47,9 +50,9 @@ const PositionContainer = styled.div`
 //   { name: "modern", pos: [71, 24], size: 2.6 },
 // ];
 
-const Room = ({ bears = [] }) => {
+const Room = ({ bears = [], login = false }) => {
   return (
-    <RoomContainer>
+    <RoomContainer login={login}>
       <Image src={"/room.png"} layout="fill" objectFit="contain" />
       {bears.map((item) => (
         <PositionContainer placement={bearTypes[item].pos}>
