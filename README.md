@@ -22,14 +22,14 @@
   <p align="center">
     Built for <a href="https://stormhacks.com/" target="_blank">Stormhack 2022</a>.
     <br />
-    <a href="https://github.com/gitlab-analyzer/gitlabanalyzer/blob/master/server/API_example_response.md#api-example-response"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/quarterblue/mystudy-space/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/gitlab-analyzer/gitlabanalyzer#demo-iteration-3">View Demo</a>
+    <a href="https://github.com/quarterblue/mystudy-space/">View Demo</a>
     ·
-    <a href="https://github.com/gitlab-analyzer/gitlabanalyzer/issues">Report Bug</a>
+    <a href="https://github.com/quarterblue/mystudy-space/">Report Bug</a>
     ·
-    <a href="https://github.com/gitlab-analyzer/gitlabanalyzer/issues">Request Feature</a>
+    <a href="https://github.com/quarterblue/mystudy-space/">Request Feature</a>
   </p>
 </p>
 
